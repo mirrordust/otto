@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { computed, ref, onMounted, useTemplateRef, watchEffect } from 'vue'
+import { computed, ref } from 'vue'
 import { getMembers } from '@/api/fake'
-import { usePhotoLayout } from '@/hooks/usePhotoLayout'
+// import { usePhotoLayout } from '@/hooks/usePhotoLayout'
 
 import IconArrowLeft from './icons/IconArrowLeft.vue'
 import IconArrowLeftDisabled from './icons/IconArrowLeftDisabled.vue'
@@ -138,6 +138,5 @@ h2 {
   /* overflow-x: auto; */
 }
 
-@media (min-width: 1024px) {
-}
+@media (min-width: 1024px) {}
 </style>
