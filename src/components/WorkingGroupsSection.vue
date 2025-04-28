@@ -1,39 +1,39 @@
 <script setup lang="ts">
-import { computed, ref, onMounted, useTemplateRef, watchEffect } from 'vue';
-import { getMembers } from '@/api/fake';
-import { usePhotoLayout } from '@/hooks/usePhotoLayout';
+import { computed, ref, onMounted, useTemplateRef, watchEffect } from 'vue'
+import { getMembers } from '@/api/fake'
+import { usePhotoLayout } from '@/hooks/usePhotoLayout'
 
-import IconArrowLeft from './icons/IconArrowLeft.vue';
-import IconArrowLeftDisabled from './icons/IconArrowLeftDisabled.vue';
-import IconArrowRight from './icons/IconArrowRight.vue';
-import IconArrowRightDisabled from './icons/IconArrowRightDisabled.vue';
-import MemberItem from './MemberItem.vue';
+import IconArrowLeft from './icons/IconArrowLeft.vue'
+import IconArrowLeftDisabled from './icons/IconArrowLeftDisabled.vue'
+import IconArrowRight from './icons/IconArrowRight.vue'
+import IconArrowRightDisabled from './icons/IconArrowRightDisabled.vue'
+import MemberItem from './MemberItem.vue'
 
-const members = ref(getMembers());
-const start_idx = ref(0);
+const members = ref(getMembers())
+const start_idx = ref(0)
 // const photosRef = useTemplateRef(null);
 // const { span } = usePhotoLayout(photosRef, 234, 66);
-const span = ref(4);
+const span = ref(4)
 const visibleMembers = computed(() => {
-  return members.value.slice(start_idx.value, start_idx.value + span.value);
-});
+  return members.value.slice(start_idx.value, start_idx.value + span.value)
+})
 
 const leftEnd = computed(() => {
-  return start_idx.value == 0 ? true : false;
-});
+  return start_idx.value == 0 ? true : false
+})
 const rightEnd = computed(() => {
-  return start_idx.value + span.value >= members.value.length ? true : false;
-});
+  return start_idx.value + span.value >= members.value.length ? true : false
+})
 
 function toLeft() {
   if (start_idx.value > 0) {
-    start_idx.value -= span.value;
+    start_idx.value -= span.value
   }
 }
 
 function toRight() {
   if (start_idx.value + span.value < members.value.length) {
-    start_idx.value += span.value;
+    start_idx.value += span.value
   }
 }
 
@@ -70,7 +70,7 @@ function toRight() {
     <div class="grid" ref="photos">
       <MemberItem v-for="member in visibleMembers" :home-page="member.homePage" :key="member.id">
         <template #photo>
-          <img :src="member.photo" class="cover">
+          <img :src="member.photo" class="cover" />
         </template>
         <template #name>{{ member.name }}</template>
         {{ member.intro }}
@@ -90,7 +90,7 @@ h2 {
   font-size: 32px;
   line-height: 100%;
   letter-spacing: 0;
-  color: #FFFFFF;
+  color: #ffffff;
 
   text-align: center;
 }
@@ -138,5 +138,6 @@ h2 {
   /* overflow-x: auto; */
 }
 
-@media (min-width: 1024px) {}
+@media (min-width: 1024px) {
+}
 </style>

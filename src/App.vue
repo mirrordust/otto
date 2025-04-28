@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import PageHeader from './components/PageHeader.vue';
-import PageFooter from './components/PageFooter.vue';
+import PageHeader from './components/PageHeader.vue'
+import PageFooter from './components/PageFooter.vue'
 </script>
 
 <template>
@@ -22,17 +22,18 @@ import PageFooter from './components/PageFooter.vue';
 .header-container {
   position: sticky;
   top: 0;
-  background-color: #05051E;
-  font-family: "Roboto Condensed";
+  background-color: #05051e;
+  font-family: 'Roboto Condensed';
 }
 
 .content-container {
-  font-family: "Poppins";
+  font-family: 'Poppins';
 }
 
 .footer-container {
-  font-family: "Inter";
+  font-family: 'Inter';
 }
 
-@media (min-width: 1024px) {}
+@media (min-width: 1024px) {
+}
 </style>

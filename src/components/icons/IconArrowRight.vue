@@ -1,6 +1,6 @@
 <template>
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M24.35 18L13.15 29.2L16 32L32 16L16 0L13.15 2.8L24.35 14H0V18H24.35Z" fill="white" />
-        <path d="M24.35 18L13.15 29.2L16 32L32 16L16 0L13.15 2.8L24.35 14H0V18H24.35Z" fill="white" />
-    </svg>
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M24.35 18L13.15 29.2L16 32L32 16L16 0L13.15 2.8L24.35 14H0V18H24.35Z" fill="white" />
+    <path d="M24.35 18L13.15 29.2L16 32L32 16L16 0L13.15 2.8L24.35 14H0V18H24.35Z" fill="white" />
+  </svg>
 </template>
