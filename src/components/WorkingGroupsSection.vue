@@ -81,8 +81,13 @@ function toRight() {
 
 <style scoped>
 .parent {
-  padding-top: 160px;
+  margin-top: 80px;
+  padding-top: 80px;
+  /* padding-top: 160px; */
   padding-bottom: 80px;
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
 h2 {
@@ -95,13 +100,6 @@ h2 {
   text-align: center;
 }
 
-.nav {
-  position: relative;
-  bottom: 16px;
-  right: 98px;
-  text-align: right;
-}
-
 .left {
   padding-right: 32px;
 }
@@ -111,17 +109,6 @@ h2 {
      width: auto;
     height: auto;
 } */
-
-.grid {
-  display: flex;
-  padding-left: 100px;
-  padding-right: 206px;
-  /* grid-column-gap: 66px; */
-  /* column-gap: 66px; */
-  /* grid-template-columns: repeat(auto-fill, minmax(234px, 1fr)); */
-  /* grid-template-rows: 1fr; */
-  justify-content: space-between;
-}
 
 .grid {
   display: grid;
@@ -138,5 +125,12 @@ h2 {
   /* overflow-x: auto; */
 }
 
-@media (min-width: 1024px) {}
+@media (min-width: 1024px) {
+  .nav {
+    position: absolute;
+    bottom: 50%;
+    right: 98px;
+    transform: translateY(50%);
+  }
+}
 </style>

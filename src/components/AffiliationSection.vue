@@ -73,6 +73,7 @@ h2 {
   .grid-container {
     border-radius: 16px;
     background-image: url(/images/affiliation/affilia-background.png);
+    height: 411px;
   }
 
   .grid {
