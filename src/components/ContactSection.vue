@@ -1,7 +1,7 @@
 <template>
   <div class="content-container">
     <div class="flex">
-      <h2>WSDI Secretariats</h2>
+      <h2>CCRS Secretariats</h2>
       <div class="contact"><span class="name">Aubrey</span> (aubreyliao@ust.hk)</div>
       <div class="contact"><span class="name">Tu Kexi</span> (tukexintkx@gmail.com)</div>
     </div>
