@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
   <div class="content-container">
     <div class="flex">
@@ -11,39 +9,74 @@
 </template>
 
 <style scoped>
-.flex {
-  display: flex;
-  align-items: center;
-  background: #2c22c8;
+@media (max-width: 1024px) {
+  .content-container {
+    background: #2c22c8;
+  }
+
+  .flex {
+    padding: 10px 10px;
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: 26px;
+    /* line-height: 100%; */
+    letter-spacing: 0;
+    color: #ffffff;
+  }
+
+  .contact {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: 0;
+    color: #ffffff;
+  }
+
+  .name {
+    font-weight: 500;
+  }
 }
 
-h2 {
-  font-weight: 600;
-  font-size: 32px;
-  /* line-height: 100%; */
-  letter-spacing: 0;
-  color: #ffffff;
+@media (min-width: 1024px) {
+  .content-container {
+    background: #2c22c8;
+  }
 
-  padding-top: 24px;
-  padding-bottom: 24px;
-  padding-left: 60px;
-}
+  .flex {
+    display: flex;
+    align-items: center;
+  }
 
-.contact {
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 40px;
-  letter-spacing: 0;
-  color: #ffffff;
+  h2 {
+    font-weight: 600;
+    font-size: 32px;
+    /* line-height: 100%; */
+    letter-spacing: 0;
+    color: #ffffff;
 
-  padding-left: 40px;
-}
+    padding-top: 24px;
+    padding-bottom: 24px;
+    padding-left: 60px;
+  }
 
-div.contact:first-of-type {
-  padding-left: 80px;
-}
+  .contact {
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 40px;
+    letter-spacing: 0;
+    color: #ffffff;
 
-.name {
-  font-weight: 700;
+    padding-left: 40px;
+  }
+
+  div.contact:first-of-type {
+    padding-left: 80px;
+  }
+
+  .name {
+    font-weight: 700;
+  }
 }
 </style>

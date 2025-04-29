@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
   <div class="content-container">
     <div class="flex">
@@ -7,8 +5,8 @@
 
       <div class="text">
         <span class="emphasize"
-          >The Otto Poon Centre for Climate Resilience and Sustainability at HKUST</span
-        >
+          >The Otto Poon Centre for Climate Resilience and Sustainability at HKUST
+        </span>
         is strategically positioned to be a pivotal force in the advancement of climate resilience
         and sustainability knowledge and technology.<br />
 
@@ -25,9 +23,9 @@
         The Centre will capitalize on the influential role of both the newly established
         <span class="emphasize">WORLD SUSTAINABLE DEVELOPMENT INSTITUTE (WSDI)</span>
         in international climate policy and technology forums and
-        <span class="emphasize"
-          >DIGITAL METEOROLOGICAL SERVICES AND INNOVATION LAB at HKUST Shanghai Centre</span
-        >
+        <span class="emphasize">
+          DIGITAL METEOROLOGICAL SERVICES AND INNOVATION LAB at HKUST Shanghai Centre
+        </span>
         in close collaboration with state agencies and organizations.
       </div>
     </div>
@@ -79,6 +77,7 @@ h2 {
   line-height: 40px;
   letter-spacing: 0;
   color: #ffffff;
+  text-align: center;
 }
 
 .emphasize {
@@ -141,7 +140,6 @@ h3 {
   .text {
     padding-top: 40px;
     max-width: 1304px;
-    text-align: center;
   }
 
   .grid {

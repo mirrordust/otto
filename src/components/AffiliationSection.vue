@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
   <div class="content-container">
     <h2>Affiliation & Contact</h2>

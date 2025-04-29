@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
   <div class="content-container">
     <h2>News</h2>
@@ -21,10 +19,6 @@
 </template>
 
 <style scoped>
-.content-container {
-  padding: 0 100px;
-}
-
 h2 {
   font-weight: 500;
   font-size: 32px;
@@ -34,14 +28,6 @@ h2 {
   text-align: center;
   padding-top: 123px;
   padding-bottom: 96px;
-}
-
-.grid {
-  padding-bottom: 200px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-items: center;
-  align-items: center;
 }
 
 .date {
@@ -82,7 +68,7 @@ h2 {
 }
 
 .image {
-  width: 680px;
+  width: min(680px, 100%);
   border-radius: 16px;
   overflow: hidden;
 }
@@ -93,5 +79,16 @@ h2 {
 }
 
 @media (min-width: 1024px) {
+  .content-container {
+    padding: 0 100px;
+  }
+
+  .grid {
+    padding-bottom: 200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+  }
 }
 </style>
