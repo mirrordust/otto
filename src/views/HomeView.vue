@@ -4,7 +4,6 @@ import AboutSection from '@/components/AboutSection.vue'
 import AffiliationSection from '@/components/AffiliationSection.vue'
 import WorkingGroupsSection from '@/components/WorkingGroupsSection.vue'
 import NewsSection from '@/components/NewsSection.vue'
-import ContactSection from '@/components/ContactSection.vue'
 </script>
 
 <template>
@@ -14,6 +13,5 @@ import ContactSection from '@/components/ContactSection.vue'
     <AffiliationSection />
     <WorkingGroupsSection />
     <NewsSection />
-    <ContactSection />
   </main>
 </template>
