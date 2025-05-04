@@ -22,7 +22,7 @@ import PageFooter from './components/PageFooter.vue'
 .header-container {
   position: sticky;
   top: 0;
-  background-color: #05051e;
+  background-color: #05102e;
   font-family: 'Roboto Condensed';
 }
 

@@ -27,7 +27,6 @@
     <div class="secretariats">
       <h3>CCRS Secretariats</h3>
       <div class="contact">Aubrey (aubreyliao@ust.hk)</div>
-      <div class="contact">Tu Kexi (tukexintkx@gmail.com)</div>
     </div>
   </footer>
 </template>

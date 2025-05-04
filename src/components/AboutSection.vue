@@ -61,6 +61,7 @@
   flex-direction: column;
   justify-content: start;
   align-items: center;
+  background-image: url(/images/about/about-background.png);
 }
 
 h2 {

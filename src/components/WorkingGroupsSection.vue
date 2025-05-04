@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import { getMembers } from '@/api/fake'
+import { getMembers } from '@/api/data'
 // import { usePhotoLayout } from '@/hooks/usePhotoLayout'
 
 import IconArrowLeft from './icons/IconArrowLeft.vue'
@@ -13,7 +13,7 @@ const members = ref(getMembers())
 const start_idx = ref(0)
 // const photosRef = useTemplateRef(null);
 // const { span } = usePhotoLayout(photosRef, 234, 66);
-const span = ref(4)
+const span = ref(8)
 const visibleMembers = computed(() => {
   return members.value.slice(start_idx.value, start_idx.value + span.value)
 })
