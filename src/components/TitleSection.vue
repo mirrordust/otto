@@ -16,7 +16,7 @@
 
 h1 {
   font-weight: 700;
-  font-size: 60px;
+  font-size: 40px;
   /* line-height: 100%; */
   letter-spacing: 0;
   color: #ffffff;
@@ -24,6 +24,7 @@ h1 {
 
 @media (min-width: 1024px) {
   h1 {
+    font-size: 60px;
     padding-top: 166px;
     padding-left: 76px;
   }

@@ -86,7 +86,7 @@ h2 {
 }
 
 .item {
-  width: 400px;
+  width: 100vw;
   height: 440px;
   border-radius: 16px;
 }
@@ -147,6 +147,12 @@ h3 {
     padding-top: 80px;
     padding-left: 100px;
     padding-right: 100px;
+  }
+
+  .item {
+    width: 400px;
+    height: 440px;
+    border-radius: 16px;
   }
 
   h3 {
