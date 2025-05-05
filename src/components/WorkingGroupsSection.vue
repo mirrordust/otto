@@ -55,26 +55,28 @@ function toRight() {
           <IconArrowLeftDisabled class="svg" />
         </span>
         <span v-else class="left">
-          <IconArrowLeft class="svg" @click="toLeft" />
+          <IconArrowLeft class="svg enabled" @click="toLeft" />
         </span>
 
         <span v-if="rightEnd" class="right">
           <IconArrowRightDisabled class="svg" />
         </span>
         <span v-else class="right">
-          <IconArrowRight class="svg" @click="toRight" />
+          <IconArrowRight class="svg enabled" @click="toRight" />
         </span>
       </div>
     </div>
 
     <div class="grid" ref="photos">
-      <MemberItem v-for="member in visibleMembers" :home-page="member.homePage" :key="member.id">
-        <template #photo>
-          <img :src="member.photo" class="cover" />
-        </template>
-        <template #name>{{ member.name }}</template>
-        {{ member.intro }}
-      </MemberItem>
+      <TransitionGroup name="list">
+        <MemberItem v-for="member in visibleMembers" :home-page="member.homePage" :key="member.id">
+          <template #photo>
+            <img :src="member.photo" class="cover" />
+          </template>
+          <template #name>{{ member.name }}</template>
+          {{ member.intro }}
+        </MemberItem>
+      </TransitionGroup>
     </div>
   </div>
 </template>
@@ -123,6 +125,29 @@ h2 {
   /* grid-auto-flow: column; */
   /* 超出容器宽度时滚动 */
   /* overflow-x: auto; */
+}
+
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+/* .left:hover {
+  border: 1px solid #c83e22;
+}
+
+.right:hover {
+  border: 1px solid #c83e22;
+} */
+
+.svg.enabled:hover {
+  border: 1px solid transparent;
 }
 
 @media (min-width: 1024px) {
