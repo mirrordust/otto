@@ -91,7 +91,7 @@ const members = [
     id: 13,
     photo: '/images/photo/guanghao.png',
     name: 'Guanghao Chen',
-    intro: 'Earth Engineering',
+    intro: 'Water Technology, Sustainable Urban',
     homePage: 'https://seng.hkust.edu.hk/about/people/faculty/guanghao-chen',
   },
   {
@@ -120,7 +120,7 @@ const members = [
     id: 17,
     photo: '/images/photo/huijuan.png',
     name: 'Huijuan Xiao',
-    intro: 'Earth Engineering',
+    intro: 'Sustainable Urban',
     homePage: 'https://ce.hkust.edu.hk/people/huijuan-xiao-xiaohuijuan',
   },
   // AI for SDGs
@@ -193,15 +193,15 @@ const members = [
     id: 27,
     photo: '/images/photo/dong.png',
     name: 'Dong Lou',
-    intro: 'Earth Engineering',
+    intro: 'Weather Derivatives and Finance',
     homePage: 'https://facultyprofiles.hkust.edu.hk/profiles.php?profile=dong-lou-dlou',
   },
-  // Social Science
+  // Social and Human Science
   {
     id: 28,
     photo: '/images/photo/chen.png',
     name: 'Chen Cheng',
-    intro: 'Earth Engineering',
+    intro: 'Social and Human Science ',
     homePage: 'https://facultyprofiles.hkust.edu.hk/profiles.php?profile=chen-cheng-chencheng',
   },
 ]
