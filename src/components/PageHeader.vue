@@ -2,10 +2,27 @@
 import IconUst from './icons/IconUst.vue'
 import IconLogo from './icons/IconLogo.vue'
 import IconMore from './icons/IconMore.vue'
+
+import { ref, onMounted, onUnmounted, computed } from 'vue'
+const scrollY = ref(0)
+const opacity = ref(0)
+
+const handleScroll = () => {
+  const currentY = window.scrollY || document.documentElement.scrollTop
+  scrollY.value = currentY
+  opacity.value = Math.min(currentY / 200, 1)
+}
+
+const hasBackground = computed(() => {
+  return scrollY.value > 20 ? true : false
+})
+
+onMounted(() => window.addEventListener('scroll', handleScroll))
+onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 </script>
 
 <template>
-  <header class="header">
+  <header class="header" :class="{ 'has-bg': hasBackground }">
     <div class="flex-item ust">
       <IconUst class="svg svg-ust" />
     </div>
@@ -65,9 +82,45 @@ import IconMore from './icons/IconMore.vue'
 
 @media (min-width: 1024px) {
   .header {
-    padding-left: 4%;
-    padding-top: 4%;
-    padding-bottom: 2%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* left: calc((100vw - 1440px) / 2); */
+    /* right: calc((100vw - 1440px) / 2); */
+    margin: 0 calc((100vw - min(1440px, 100vw)) / 2);
+  }
+
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      -webkit-transform: translateY(-20px);
+      -ms-transform: translateY(-20px);
+      transform: translateY(-20px);
+    }
+
+    100% {
+      opacity: 1;
+      -webkit-transform: translateY(0);
+      -ms-transform: translateY(0);
+      transform: translateY(0);
+    }
+  }
+
+  .has-bg {
+    background-color: #05102e;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+  }
+
+  .header {
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top: 60px;
+    padding-bottom: 30px;
     display: flex;
     justify-content: flex-start;
     align-items: center;

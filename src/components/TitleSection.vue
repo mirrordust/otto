@@ -10,8 +10,10 @@
 
 <style scoped>
 .content-container {
-  height: 640px;
+  /* height: 640px; */
   background-image: url(/images/background.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 h1 {
@@ -25,7 +27,8 @@ h1 {
 @media (min-width: 1024px) {
   h1 {
     font-size: 60px;
-    padding-top: 166px;
+    padding-top: 274px;
+    padding-bottom: 274px;
     padding-left: 76px;
   }
 }
