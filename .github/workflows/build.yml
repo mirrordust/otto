@@ -1,0 +1,44 @@
+name: Build and Package
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+
+env:
+  NAME: ccrs
+
+jobs:
+  build-and-package:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [22.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+      - name: Create archive
+        run: |
+          tar -zcvf $NAME-$(git rev-parse --short HEAD).tar.gz dist
+          ls *.tar.gz
+      - name: md5sum
+        run: |
+          md5sum $NAME-$(git rev-parse --short HEAD).tar.gz | awk '{print $1}' | xargs -I {} touch {}.md5
+          ls *.md5
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            $NAME-$(git rev-parse --short HEAD).tar.gz
+            *.md5
+          tag_name: ${{ github.ref_name }}
