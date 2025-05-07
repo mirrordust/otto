@@ -1,42 +1,68 @@
 <template>
   <div class="content-container">
-    <h2>Affiliation & Contact</h2>
+    <h3>Our Contact</h3>
+    <h2>Affiliation</h2>
 
-    <div class="grid-container">
-      <div class="grid">
-        <div class="item image">
-          <img src="/images/affiliation/affilia.png" class="cover" />
+    <div class="grid">
+      <div class="item image">
+        <img src="/images/affiliation/affilia.png" class="cover" />
+      </div>
+
+      <div class="item contact">
+        <div class="line"></div>
+
+        <div class="depart">
+          The Hong Kong University
+          <br />
+          of Science and Technology
         </div>
-        <div class="item contact">
-          <div class="depart">
-            The Hong Kong University
-            <br />
-            of Science and Technology
-          </div>
-          <div class="people-background">
-            <div class="people">Prof. Mengqian LU (cemlu@ust.hk)</div>
-          </div>
-        </div>
+        <div class="people">Prof. Mengqian LU (cemlu@ust.hk)</div>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-h2 {
+.content-container {
+  background-color: #1e1e1e;
+}
+
+h3 {
+  font-family: 'Noto Sans';
   font-weight: 500;
-  font-size: 32px;
-  line-height: 100%;
-  letter-spacing: 0;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: 0px;
+  color: #9965ff;
+
+  padding-top: 80px;
+  padding-left: 100px;
+}
+
+h2 {
+  font-family: 'Noto Sans';
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 52px;
+  letter-spacing: 0px;
   color: #ffffff;
-  text-align: center;
-  padding-top: 160px;
-  padding-bottom: 49px;
+
+  padding-top: 20px;
+  padding-left: 100px;
 }
 
 .cover {
   width: 100%;
   object-fit: cover;
+}
+
+.line {
+  border-top: 4px solid #4e07d8;
+  width: 80px;
+  height: 0;
+
+  /* 对齐下面邮件地址左边 */
+  margin-left: 32px;
 }
 
 .depart {
@@ -45,15 +71,12 @@ h2 {
   /* line-height: 100%; */
   letter-spacing: 0;
   color: #ffffff;
-  padding-bottom: 50px;
-  /* text-align: center; */
-  padding-left: 32px;
-}
 
-.people-background {
-  background-color: #2c22c8;
-  text-align: center;
-  border-radius: 32px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+
+  /* 对齐下面邮件地址左边 */
+  padding-left: 32px;
 }
 
 .people {
@@ -63,23 +86,19 @@ h2 {
   letter-spacing: 0;
   color: #ffffff;
   padding: 12px 32px;
+  background-color: #4e07d8;
+  border-radius: 32px;
 }
 
 @media (min-width: 1024px) {
-  .content-container {
-    padding: 0 100px;
-  }
-
-  .grid-container {
-    border-radius: 16px;
-    background-image: url(/images/affiliation/affilia-background.png);
-    height: 411px;
-  }
-
   .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 40px;
+    column-gap: 30px;
+    padding-top: 37px;
+    padding-left: 138px;
+    padding-right: 135px;
+    padding-bottom: 100px;
     justify-items: center;
     align-items: center;
   }

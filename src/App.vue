@@ -9,7 +9,7 @@ import PageFooter from './components/PageFooter.vue'
     <PageHeader />
   </div>
 
-  <div class="content-container">
+  <div class="main-content-container">
     <RouterView />
   </div>
 
@@ -22,11 +22,12 @@ import PageFooter from './components/PageFooter.vue'
 .header-container {
   position: sticky;
   top: 0;
-  background-color: #05102e;
+  background-color: #ffffff;
   font-family: 'Roboto Condensed';
+  z-index: 9999;
 }
 
-.content-container {
+.main-content-container {
   font-family: 'Poppins';
 }
 

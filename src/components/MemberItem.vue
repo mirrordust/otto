@@ -4,6 +4,18 @@ defineProps({
     type: String,
     required: false,
   },
+  photo: {
+    type: String,
+    requird: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  intro: {
+    type: String,
+    required: true,
+  },
 })
 </script>
 
@@ -11,57 +23,72 @@ defineProps({
   <div class="a-member">
     <div class="photo">
       <a v-if="homePage" :href="homePage">
-        <slot name="photo"></slot>
+        <img :src="photo" class="cover" />
       </a>
       <div v-else>
-        <slot name="photo"></slot>
+        <img :src="photo" class="cover" />
       </div>
     </div>
 
-    <div class="name">
-      <slot name="name"></slot>
-    </div>
-
-    <div class="intro">
-      <slot></slot>
+    <div class="caption">
+      <div class="name">{{ name }}</div>
+      <div class="area">{{ intro }}</div>
     </div>
   </div>
 </template>
 
 <style scoped>
 .a-member {
-  width: 234px;
+  position: relative;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  width: 232px;
+  height: 320px;
+
+  border-radius: 16px;
+  overflow: hidden;
 }
 
-.photo {
+.cover {
   width: 100%;
-  border-radius: 16px;
+  object-fit: cover;
 }
 
 .name {
-  padding-top: 20px;
-  padding-left: 20px;
+  padding-top: 16px;
+  padding-left: 16px;
 
   font-weight: 600;
-  font-size: 32px;
+  font-size: 24px;
   /* line-height: 100%; */
-  letter-spacing: 0;
+  letter-spacing: 0%;
   color: #ffffff;
 }
 
-.intro {
+.area {
   padding-top: 4px;
-  padding-left: 20px;
+  padding-left: 16px;
+  padding-bottom: 16px;
 
   font-weight: 400;
-  font-size: 18px;
-  line-height: 40px;
-  letter-spacing: 0;
+  font-size: 16px;
+  /* line-height: 100%; */
+  letter-spacing: 0%;
   color: #ffffff;
+}
+
+.caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  transform: translateY(100%);
+}
+
+.a-member:hover .caption {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>

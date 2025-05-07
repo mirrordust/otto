@@ -1,6 +1,6 @@
 <template>
   <div class="content-container">
-    <h2>News</h2>
+    <h3>News</h3>
 
     <div class="grid">
       <div class="desc">
@@ -19,15 +19,15 @@
 </template>
 
 <style scoped>
-h2 {
+h3 {
   font-weight: 500;
-  font-size: 32px;
-  /* line-height: 100%; */
-  letter-spacing: 0;
-  color: #ffffff;
-  text-align: center;
-  padding-top: 123px;
-  padding-bottom: 96px;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: 0px;
+  color: #4e07d8;
+
+  padding-top: 80px;
+  padding-left: 100px;
 }
 
 .date {

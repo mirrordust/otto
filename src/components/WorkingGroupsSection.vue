@@ -13,7 +13,7 @@ const members = ref(getMembers())
 const start_idx = ref(0)
 // const photosRef = useTemplateRef(null);
 // const { span } = usePhotoLayout(photosRef, 234, 66);
-const span = ref(8)
+const span = ref(10)
 const visibleMembers = computed(() => {
   return members.value.slice(start_idx.value, start_idx.value + span.value)
 })
@@ -47,6 +47,8 @@ function toRight() {
 
 <template>
   <div class="content-container">
+    <h3>Our Team</h3>
+
     <div class="parent">
       <h2>Working Groups</h2>
 
@@ -69,41 +71,58 @@ function toRight() {
 
     <div class="grid" ref="photos">
       <TransitionGroup name="list">
-        <MemberItem v-for="member in visibleMembers" :home-page="member.homePage" :key="member.id">
-          <template #photo>
-            <img :src="member.photo" class="cover" />
-          </template>
-          <template #name>{{ member.name }}</template>
-          {{ member.intro }}
-        </MemberItem>
+        <MemberItem
+          v-for="member in visibleMembers"
+          :key="member.id"
+          :photo="member.photo"
+          :name="member.name"
+          :intro="member.intro"
+          :home-page="member.homePage"
+        />
       </TransitionGroup>
     </div>
+
+    <div class="divider"></div>
   </div>
 </template>
 
 <style scoped>
-.parent {
-  margin-top: 80px;
-  padding-top: 80px;
-  /* padding-top: 160px; */
-  padding-bottom: 80px;
-  position: relative;
-  display: flex;
-  justify-content: center;
+h3 {
+  font-family: 'Noto Sans';
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: 0px;
+  color: #4e07d8;
+
+  padding-top: 120px;
+  padding-left: 100px;
 }
 
 h2 {
-  font-weight: 500;
-  font-size: 32px;
-  line-height: 100%;
-  letter-spacing: 0;
-  color: #ffffff;
-
-  text-align: center;
+  font-family: 'Noto Sans';
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 52px;
+  letter-spacing: 0px;
+  color: #000000;
 }
 
-.left {
-  padding-right: 32px;
+.nav {
+  display: flex;
+  gap: 32px;
+}
+
+.parent {
+  padding-top: 30px;
+  padding-left: 100px;
+  padding-right: 100px;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  align-items: center;
+  justify-content: space-between;
 }
 
 /* .svg {
@@ -115,11 +134,18 @@ h2 {
 .grid {
   display: grid;
   padding-left: 100px;
-  padding-right: 206px;
-  grid-column-gap: 66px;
-  column-gap: 66px;
-  grid-template-columns: repeat(auto-fill, minmax(234px, 1fr));
-  justify-content: space-between;
+  padding-right: 100px;
+  padding-top: 80px;
+  padding-bottom: 116px;
+
+  grid-column-gap: 20px;
+  column-gap: 20px;
+  grid-row-gap: 20px;
+  row-gap: 20px;
+
+  grid-template-columns: repeat(auto-fill, minmax(232px, 1fr));
+  grid-auto-rows: minmax(320px, auto);
+  /* justify-content: space-between; */
 
   /* 水平排列 */
   /* grid-auto-flow: column; */
@@ -150,12 +176,12 @@ h2 {
   border: 1px solid transparent;
 }
 
+.divider {
+  border-bottom: 1.5px solid #dddfdd;
+  width: min(1380px, 100%);
+  height: 0;
+}
+
 @media (min-width: 1024px) {
-  .nav {
-    position: absolute;
-    bottom: 50%;
-    right: 98px;
-    transform: translateY(50%);
-  }
 }
 </style>

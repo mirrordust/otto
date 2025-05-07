@@ -10,6 +10,10 @@ import '@fontsource/poppins/900.css'
 import '@fontsource/roboto-condensed'
 import '@fontsource/inter'
 
+import '@fontsource/noto-sans/400.css'
+import '@fontsource/noto-sans/500.css'
+import '@fontsource/noto-sans/700.css'
+
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 

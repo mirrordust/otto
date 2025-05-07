@@ -13,7 +13,7 @@ const handleScroll = () => {
   opacity.value = Math.min(currentY / 200, 1)
 }
 
-const hasBackground = computed(() => {
+const hasScrolled = computed(() => {
   return scrollY.value > 20 ? true : false
 })
 
@@ -22,7 +22,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 </script>
 
 <template>
-  <header class="header" :class="{ 'has-bg': hasBackground }">
+  <header class="header" :class="{ 'header-small': hasScrolled }">
     <div class="flex-item ust">
       <IconUst class="svg svg-ust" />
     </div>
@@ -61,7 +61,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
   .ust {
     padding-right: 5px;
-    border-right: 1px solid #ffffff;
+    border-right: 1px solid #003366;
   }
 
   .site {
@@ -82,48 +82,17 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
 @media (min-width: 1024px) {
   .header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    /* left: calc((100vw - 1440px) / 2); */
-    /* right: calc((100vw - 1440px) / 2); */
-    margin: 0 calc((100vw - min(1440px, 100vw)) / 2);
-  }
-
-  @keyframes fadeInDown {
-    0% {
-      opacity: 0;
-      -webkit-transform: translateY(-20px);
-      -ms-transform: translateY(-20px);
-      transform: translateY(-20px);
-    }
-
-    100% {
-      opacity: 1;
-      -webkit-transform: translateY(0);
-      -ms-transform: translateY(0);
-      transform: translateY(0);
-    }
-  }
-
-  .has-bg {
-    background-color: #05102e;
-    animation-duration: 1s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-    -webkit-animation-name: fadeInDown;
-    animation-name: fadeInDown;
-  }
-
-  .header {
     padding-left: 60px;
-    padding-right: 60px;
     padding-top: 60px;
     padding-bottom: 30px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+  }
+
+  .header-small {
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
 
   .svg {
@@ -138,7 +107,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
   .ust {
     padding-right: 20px;
-    border-right: 1px solid #ffffff;
+    border-right: 1px solid #003366;
   }
 
   .site {
@@ -151,7 +120,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
   .logo-name {
     padding-left: 16px;
-    color: #ffffff;
+    color: #0b0717;
     font-weight: 400;
     font-size: 20px;
     /* line-height: 100%; */
