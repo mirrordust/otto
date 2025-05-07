@@ -4,7 +4,6 @@
 
     <div class="grid">
       <div class="desc">
-        <div class="desc-border"></div>
         <div class="desc-content">
           <div class="date">23rd April 2025</div>
           <div class="title">The First Meeting for the Otto Poon CCRS projects</div>
@@ -20,6 +19,7 @@
 
 <style scoped>
 h3 {
+  font-family: 'Noto Sans';
   font-weight: 500;
   font-size: 20px;
   line-height: 20px;
@@ -30,22 +30,33 @@ h3 {
   padding-left: 100px;
 }
 
+.grid {
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 80px;
+  padding-bottom: 150px;
+}
+
 .date {
+  font-family: 'Noto Sans';
   font-weight: 400;
   font-size: 20px;
   /* line-height: 100%; */
   letter-spacing: 0;
-  color: #ffffff;
+  color: #000000;
+
   padding-top: 13px;
   padding-bottom: 12px;
 }
 
 .title {
+  font-family: 'Noto Sans';
   font-weight: 600;
   font-size: 24px;
-  /* line-height: 100%; */
-  letter-spacing: 0;
-  color: #ffffff;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #000000;
+
   padding-bottom: 13px;
 }
 
@@ -56,15 +67,21 @@ h3 {
   justify-self: start;
 }
 
-.desc-border {
-  border-left: 8px solid #2c22c8;
-  width: 0;
-  height: 140px;
-  border-radius: 4px;
+.desc-content {
+  position: relative;
+  padding-left: 24px;
 }
 
-.desc-content {
-  padding-left: 24px;
+.desc-content::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 8px;
+  background: #4e07d8;
+  border-radius: 4px;
+  /* z-index: -1; */
 }
 
 .image {
@@ -79,14 +96,10 @@ h3 {
 }
 
 @media (min-width: 1024px) {
-  .content-container {
-    padding: 0 100px;
-  }
-
   .grid {
-    padding-bottom: 200px;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    column-gap: 30px;
     justify-items: center;
     align-items: center;
   }
