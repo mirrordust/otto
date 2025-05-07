@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, onBeforeUnmount, ref } from 'vue'
 
+const array = ['about', 'mission', 'vision']
 const selected = ref('about')
 
 const selectAbout = computed(() => {
@@ -9,19 +10,29 @@ const selectAbout = computed(() => {
 const selectMission = computed(() => {
   return selected.value == 'mission' ? true : false
 })
-
 const selectVision = computed(() => {
   return selected.value == 'vision' ? true : false
 })
 
-function clickCard(which: string) {
-  selected.value = which
-  console.log('you select: ', selected.value)
+let idx = 0
+let timer: number = -1
+const startTimer = () => {
+  timer = setInterval(() => {
+    idx = (idx + 1) % array.length
+    selected.value = array[idx]
+  }, 10000) // 10秒切换一次
 }
 
-onMounted(() => {
-  console.log(selected)
-})
+function clickCard(which: string) {
+  clearInterval(timer)
+
+  selected.value = which
+  idx = array.indexOf(which)
+  startTimer()
+}
+
+onMounted(startTimer)
+onBeforeUnmount(() => clearInterval(timer))
 </script>
 
 <template>
@@ -55,6 +66,7 @@ onMounted(() => {
       <div class="image">
         <img src="/images/about/cover.png" class="cover" />
       </div>
+      <!-- <Transition> -->
       <div v-if="selectAbout" class="text">
         <span>The Otto Poon Centre for Climate Resilience and Sustainability at HKUST</span> is
         strategically positioned to be a pivotal force in the advancement of climate resilience and
@@ -75,9 +87,10 @@ onMounted(() => {
         The Centre will capitalize on the influential role of both the newly established
         <span>WORLD SUSTAINABLE DEVELOPMENT INSTITUTE (WSDI)</span> in international climate policy
         and technology forums and
-        <span>DIGITAL METEOROLOGICAL SERVICES AND INNOVATION LAB at HKUST Shanghai Centre</span> in
-        close collaboration with state agencies and organizations.
+        <span>DIGITAL METEOROLOGICAL SERVICES AND INNOVATION LAB at HKUST Shanghai Centre</span>
+        in close collaboration with state agencies and organizations.
       </div>
+      <!-- </Transition> -->
     </div>
   </div>
 
@@ -177,6 +190,16 @@ onMounted(() => {
   font-weight: 700;
   color: #000000;
 }
+
+/* .v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+} */
 
 .divider {
   border-bottom: 1.5px solid #dddfdd;
