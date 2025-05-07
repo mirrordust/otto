@@ -180,6 +180,7 @@ h2 {
   border-bottom: 1.5px solid #dddfdd;
   width: min(1380px, 100%);
   height: 0;
+  margin: 0 auto;
 }
 
 @media (min-width: 1024px) {

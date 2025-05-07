@@ -43,6 +43,10 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 </template>
 
 <style scoped>
+.header {
+  border-bottom: 2px solid #dddfdd;
+}
+
 @media (max-width: 1024px) {
   .header {
     padding-left: 4%;
