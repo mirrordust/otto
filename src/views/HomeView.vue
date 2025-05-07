@@ -7,7 +7,7 @@ import NewsSection from '@/components/NewsSection.vue'
 
 <template>
   <main>
-    <!-- <AboutSection /> -->
+    <AboutSection />
     <AffiliationSection />
     <WorkingGroupsSection />
     <NewsSection />

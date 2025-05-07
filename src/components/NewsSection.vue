@@ -38,15 +38,15 @@ h3 {
 }
 
 .date {
-  font-family: 'Noto Sans';
+  font-family: 'Poppins';
   font-weight: 400;
-  font-size: 20px;
+  font-size: 14px;
   /* line-height: 100%; */
-  letter-spacing: 0;
-  color: #000000;
+  letter-spacing: 0%;
+  color: #7f7f7f;
 
-  padding-top: 13px;
-  padding-bottom: 12px;
+  padding-top: 7px;
+  padding-bottom: 16px;
 }
 
 .title {
