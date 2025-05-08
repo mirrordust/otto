@@ -23,10 +23,11 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 
 <template>
   <header class="header" :class="{ 'header-small': hasScrolled }">
-    <div class="flex-item ust">
+    <a href="https://www.ust.hk" class="flex-item ust" style="text-decoration: none">
       <IconUst class="svg svg-ust" />
-    </div>
-    <div class="flex-item site">
+    </a>
+
+    <a href="/" class="flex-item site" style="text-decoration: none">
       <div class="logo">
         <IconLogo class="svg svg-site" />
       </div>
@@ -35,7 +36,8 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
         <br />
         Climate Resilience and Sustainability
       </div>
-    </div>
+    </a>
+
     <div class="flex-item more">
       <IconMore class="svg svg-more" />
     </div>

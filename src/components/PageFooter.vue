@@ -10,7 +10,7 @@
           </a>
         </li>
         <li>
-          <a href="https://ccrs.hkust.edu.hk" class="current_link">
+          <a href="/" class="current_link">
             Otto Poon Centre
             <br />
             for Climate Resilience and Sustainability
