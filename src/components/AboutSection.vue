@@ -104,7 +104,6 @@ onBeforeUnmount(() => clearInterval(timer))
   margin-top: 40px;
   margin-bottom: 50px;
   border-left: 1.5px solid #dddfdd;
-  display: flex;
   /* justify-content: space-between; */
 }
 
@@ -211,5 +210,8 @@ onBeforeUnmount(() => clearInterval(timer))
 }
 
 @media (min-width: 1024px) {
+  .content-container {
+    display: flex;
+  }
 }
 </style>
