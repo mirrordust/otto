@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
 import { getMembers } from '@/api/data'
-// import { usePhotoLayout } from '@/hooks/usePhotoLayout'
 
 import IconArrowLeft from './icons/IconArrowLeft.vue'
 import IconArrowLeftDisabled from './icons/IconArrowLeftDisabled.vue'
@@ -9,13 +8,37 @@ import IconArrowRight from './icons/IconArrowRight.vue'
 import IconArrowRightDisabled from './icons/IconArrowRightDisabled.vue'
 import MemberItem from './MemberItem.vue'
 
+const windowWidth = ref(window.innerWidth)
+
+const handleResize = () => {
+  windowWidth.value = window.innerWidth
+}
+
+// 防抖函数
+// const debounceTimer = ref<number>()
+// const handleResize2 = () => {
+//   clearTimeout(debounceTimer.value)
+//   debounceTimer.value = setTimeout(() => {
+//     windowWidth.value = window.innerWidth
+//   }, 100)
+// }
+
+const photoWidth = 232 // 照片宽度固定 232px
+const gap = 20 // grid 列间距 20px
+const calculatePerRow = computed(() => {
+  if (windowWidth.value >= 1440) {
+    return 5
+  }
+  // 计算可用空间：(总宽度 - 间距总和) / 单图宽度
+  const availableWidth = windowWidth.value - 200 // grid 左右 padding 各为 100px
+  const maxCount = Math.floor((availableWidth + gap) / (photoWidth + gap))
+  return Math.max(1, maxCount) // 至少显示1张
+})
+
 const members = ref(getMembers())
 const start_idx = ref(0)
-// const photosRef = useTemplateRef(null);
-// const { span } = usePhotoLayout(photosRef, 234, 66);
-const span = ref(10)
-const visibleMembers = computed(() => {
-  return members.value.slice(start_idx.value, start_idx.value + span.value)
+const span = computed(() => {
+  return calculatePerRow.value * 2 // 显示 2 行
 })
 
 const leftEnd = computed(() => {
@@ -24,25 +47,33 @@ const leftEnd = computed(() => {
 const rightEnd = computed(() => {
   return start_idx.value + span.value >= members.value.length ? true : false
 })
-
 function toLeft() {
   if (start_idx.value > 0) {
     start_idx.value -= span.value
+    if (start_idx.value < 0) {
+      start_idx.value = 0
+    }
   }
 }
-
 function toRight() {
   if (start_idx.value + span.value < members.value.length) {
     start_idx.value += span.value
   }
 }
 
-// watchEffect(() => {
-//     console.log(start_idx.value);
-//     console.log(span.value);
-//     console.log(leftEnd.value);
-//     console.log(rightEnd.value);
-// });
+// const visibleMembers = computed(() => {
+//   return members.value.slice(start_idx.value, start_idx.value + span.value)
+// })
+const displayPhotos = computed(() => {
+  const perRow = calculatePerRow.value
+  return [
+    members.value.slice(start_idx.value, start_idx.value + perRow), // 第一行
+    members.value.slice(start_idx.value + perRow, start_idx.value + perRow * 2), // 第二行
+  ]
+})
+
+onMounted(() => window.addEventListener('resize', handleResize))
+onBeforeUnmount(() => window.removeEventListener('resize', handleResize))
 </script>
 
 <template>
@@ -69,17 +100,20 @@ function toRight() {
       </div>
     </div>
 
-    <div class="grid" ref="photos">
-      <TransitionGroup name="list">
-        <MemberItem
-          v-for="member in visibleMembers"
-          :key="member.id"
-          :photo="member.photo"
-          :name="member.name"
-          :intro="member.intro"
-          :home-page="member.homePage"
-        />
-      </TransitionGroup>
+    <div class="photo-container">
+      <div v-for="(row, index) in displayPhotos" :key="index" class="photo-row">
+        <TransitionGroup name="list">
+          <MemberItem
+            v-for="member in row"
+            :key="member.id"
+            :photo="member.photo"
+            :name="member.name"
+            :intro="member.intro"
+            :home-page="member.homePage"
+            class="photo-item"
+          />
+        </TransitionGroup>
+      </div>
     </div>
 
     <div class="divider"></div>
@@ -131,37 +165,33 @@ h2 {
     height: auto;
 } */
 
-.grid {
-  display: grid;
+.photo-container {
   padding-left: 100px;
   padding-right: 100px;
   padding-top: 80px;
-  padding-bottom: 116px;
-
-  grid-column-gap: 20px;
-  column-gap: 20px;
-  grid-row-gap: 20px;
-  row-gap: 20px;
-
-  grid-template-columns: repeat(auto-fill, minmax(232px, 1fr));
-  grid-auto-rows: minmax(320px, auto);
-  /* justify-content: space-between; */
-
-  /* 水平排列 */
-  /* grid-auto-flow: column; */
-  /* 超出容器宽度时滚动 */
-  /* overflow-x: auto; */
+  padding-bottom: 90px;
 }
 
-.list-enter-active,
-.list-leave-active {
+.photo-row {
+  display: flex;
+  gap: 20px;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.list-enter-active
+/*, .list-leave-active */ {
   transition: all 0.5s ease;
 }
 
-.list-enter-from,
-.list-leave-to {
+.list-enter-from
+/*, .list-leave-to */ {
   opacity: 0;
-  transform: translateX(30px);
+  /* transform: translateX(30px); */
+}
+
+.list-leave-active {
+  position: absolute;
 }
 
 /* .left:hover {
