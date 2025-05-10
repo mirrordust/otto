@@ -1,5 +1,8 @@
 name: Build and Package
 
+permissions:
+  contents: write
+
 on:
   push:
     branches: ['main']
@@ -29,16 +32,29 @@ jobs:
       - run: npm run build
       - name: Create archive
         run: |
-          tar -zcvf $NAME-$(git rev-parse --short HEAD).tar.gz dist
+          SHORT_SHA=$(git rev-parse --short HEAD)
+          echo "SHORT_SHA:" $SHORT_SHA
+          NAME_WITH_SHA="$NAME-$SHORT_SHA"
+          echo "NAME_WITH_SHA: " $NAME_WITH_SHA
+          tar -zcvf $NAME_WITH_SHA.tar.gz dist/
           ls *.tar.gz
+          echo "NAME_WITH_SHA=$NAME_WITH_SHA" >> $GITHUB_ENV
       - name: md5sum
         run: |
-          md5sum $NAME-$(git rev-parse --short HEAD).tar.gz | awk '{print $1}' | xargs -I {} touch {}.md5
-          ls *.md5
+          ARCHIVE_MD5=$(md5sum "${{ env.NAME_WITH_SHA }}.tar.gz" | awk '{print $1}')
+          echo "ARCHIVE_MD5: " $ARCHIVE_MD5
+          echo "NAME_WITH_SHA: " ${{ env.NAME_WITH_SHA }}
+          FULL_NAME=${{ env.NAME_WITH_SHA }}-$ARCHIVE_MD5.tar.gz
+          echo "FULL_NAME: " $FULL_NAME
+          mv ${{ env.NAME_WITH_SHA }}.tar.gz $FULL_NAME
+          ls *.tar.gz
+          echo "FULL_NAME=$FULL_NAME" >> $GITHUB_ENV
+      - name: verify
+        run: |
+          md5sum $FULL_NAME
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            $NAME-$(git rev-parse --short HEAD).tar.gz
-            *.md5
+            ${{ env.FULL_NAME }}
           tag_name: ${{ github.ref_name }}
