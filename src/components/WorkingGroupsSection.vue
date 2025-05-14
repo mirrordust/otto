@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
-import { getMembers } from '@/api/data'
+import { getMembers, getExternalAdvisors } from '@/api/data'
 
 import IconArrowLeft from './icons/IconArrowLeft.vue'
 import IconArrowLeftDisabled from './icons/IconArrowLeftDisabled.vue'
@@ -36,6 +36,7 @@ const calculatePerRow = computed(() => {
 })
 
 const members = ref(getMembers())
+const externalAdvisors = ref(getExternalAdvisors())
 const start_idx = ref(0)
 const span = computed(() => {
   return calculatePerRow.value * 2 // 显示 2 行
@@ -116,6 +117,24 @@ onBeforeUnmount(() => window.removeEventListener('resize', handleResize))
       </div>
     </div>
 
+    <div class="external-parent">
+      <h2>External Advisors</h2>
+    </div>
+
+    <div class="external-photo-container">
+      <div class="photo-row">
+        <MemberItem
+          v-for="person in externalAdvisors"
+          :key="person.id"
+          :photo="person.photo"
+          :name="person.name"
+          :intro="person.intro"
+          :home-page="person.homePage"
+          class="photo-item"
+        />
+      </div>
+    </div>
+
     <div class="divider"></div>
   </div>
 </template>
@@ -166,10 +185,7 @@ h2 {
 } */
 
 .photo-container {
-  padding-left: 100px;
-  padding-right: 100px;
-  padding-top: 80px;
-  padding-bottom: 90px;
+  padding: 80px 100px;
 }
 
 .photo-row {
@@ -192,6 +208,18 @@ h2 {
 
 .list-leave-active {
   position: absolute;
+}
+
+.external-parent {
+  padding-left: 100px;
+  padding-right: 100px;
+}
+
+.external-photo-container {
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-top: 40px;
+  padding-bottom: 140px;
 }
 
 /* .left:hover {

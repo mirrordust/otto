@@ -165,34 +165,62 @@ const members = [
   },
   {
     id: 24,
+    photo: '/images/photo/keith.png',
+    name: 'Keith Chan',
+    intro: 'Earth Engineering',
+    homePage: 'https://facultyprofiles.hkust.edu.hk/profiles.php?profile=keith-chan-keithchan',
+  },
+  {
+    id: 25,
+    photo: '/images/photo/jize.png',
+    name: 'Jize Zhang',
+    intro: 'Sustainable Urban',
+    homePage: 'https://ce.hkust.edu.hk/people/jize-zhang-zhangjize',
+  },
+  {
+    id: 26,
+    photo: '/images/photo/christine.png',
+    name: 'Christine Loh',
+    intro: 'Earth Engineering',
+    homePage: 'https://www.envr.ust.hk/our-division/people/faculty-staff/cloh.html',
+  },
+  {
+    id: 27,
     photo: '/images/photo/lun.png',
     name: 'Lun Dai',
     intro: 'Earth Engineering',
     homePage: 'https://facultyprofiles.hkust.edu.hk/profiles.php?profile=lun-dai-dailun',
   },
   {
-    id: 25,
+    id: 28,
     photo: '/images/photo/huijuan.png',
     name: 'Huijuan Xiao',
     intro: 'Sustainable Urban',
     homePage: 'https://ce.hkust.edu.hk/people/huijuan-xiao-xiaohuijuan',
   },
   {
-    id: 26,
+    id: 29,
     photo: '/images/photo/songfan.png',
     name: 'Songfan Li',
     intro: 'AI for SDGs',
     homePage: 'https://lisongfan.people.ust.hk/',
   },
   {
-    id: 27,
+    id: 30,
     photo: '/images/photo/guoan.png',
     name: 'Guoan Zhou',
     intro: 'Renewable Energy',
     homePage: '',
   },
+  // {
+  //   id: 31,
+  //   photo: '/images/photo/joanne.png',
+  //   name: 'Joanne Huang',
+  //   intro: '',
+  //   homePage: '',
+  // },
   {
-    id: 28,
+    id: 32,
     photo: '/images/photo/tat.png',
     name: 'Tat Fan Cheng',
     intro: 'Earth Engineering',
@@ -206,4 +234,19 @@ export const getMembers = () => {
 
 export const getWorkingGroups = () => {
   return Promise.resolve({ data: members })
+}
+
+// External Advisors
+const externalAdvisors = [
+  {
+    id: 1,
+    photo: '/images/photo/pak.png',
+    name: 'Pak Wai Chan, JP',
+    intro: 'Dir of the HK Observatory',
+    homePage:
+      'https://www.directory.gov.hk/details.jsp?lang=eng&dn=cn%3D1262000109%2Cou%3DHKO%2Cou%3DPeople%2Co%3DGOVERNMENT%2Cc%3DHK',
+  },
+]
+export const getExternalAdvisors = () => {
+  return externalAdvisors
 }
