@@ -212,13 +212,13 @@ const members = [
     intro: 'Renewable Energy',
     homePage: '',
   },
-  // {
-  //   id: 31,
-  //   photo: '/images/photo/joanne.png',
-  //   name: 'Joanne Huang',
-  //   intro: '',
-  //   homePage: '',
-  // },
+  {
+    id: 31,
+    photo: '/images/photo/joanne.png',
+    name: 'Joanne Huang',
+    intro: 'Earth Engineering',
+    homePage: 'https://www.linkedin.com/in/jiayue-huang/',
+  },
   {
     id: 32,
     photo: '/images/photo/tat.png',
