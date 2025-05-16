@@ -13,7 +13,7 @@
       </div>
 
       <div class="image">
-        <img src="/images/news/first_meeting.png" class="cover" />
+        <img src="/images/news/first_meeting.jpg" class="cover" />
       </div>
     </div>
   </div>
@@ -95,6 +95,8 @@ h3 {
 .cover {
   width: 100%;
   object-fit: cover;
+  border-radius: 16px;
+  overflow: hidden;
 }
 
 @media (min-width: 1024px) {
