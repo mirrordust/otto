@@ -32,7 +32,7 @@ defineProps({
 
     <div class="caption">
       <div class="name">{{ name }}</div>
-      <div class="area">{{ intro }}</div>
+      <div class="area" v-html="intro"></div>
     </div>
   </div>
 </template>

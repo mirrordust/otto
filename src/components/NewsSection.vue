@@ -6,7 +6,9 @@
       <div class="desc">
         <div class="desc-content">
           <div class="date">23rd April 2025</div>
-          <div class="title">The First Meeting for the Otto Poon CCRS projects</div>
+          <div class="title">
+            The 1st Otto Poon CCRS Initial Interdisciplinary Engagement Meeting
+          </div>
         </div>
       </div>
 

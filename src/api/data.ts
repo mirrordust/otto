@@ -4,7 +4,7 @@ const members = [
     id: 1,
     photo: '/images/photo/mengqian.png',
     name: 'Mengqian Lu',
-    intro: 'Director of CCRS, Earth Engineering',
+    intro: 'Director of CCRS<br/>Earth Engineering',
     homePage: 'https://seng.hkust.edu.hk/about/people/faculty/mengqian-lu',
   },
   {
