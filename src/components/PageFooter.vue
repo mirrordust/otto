@@ -24,10 +24,10 @@
       </ul>
     </div>
 
-    <div class="secretariats">
+    <!-- <div class="secretariats">
       <h3>CCRS Secretariats</h3>
       <div class="contact">Aubrey (aubreyliao@ust.hk)</div>
-    </div>
+    </div> -->
   </footer>
 </template>
 
