@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import IconUst from './icons/IconUst.vue'
 import IconLogo from './icons/IconLogo.vue'
-import IconMore from './icons/IconMore.vue'
+// import IconMore from './icons/IconMore.vue'
 
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 const scrollY = ref(0)
@@ -38,9 +38,9 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
       </div>
     </a>
 
-    <div class="flex-item more">
+    <!-- <div class="flex-item more">
       <IconMore class="svg svg-more" />
-    </div>
+    </div> -->
   </header>
 </template>
 
@@ -89,7 +89,7 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
 @media (min-width: 1024px) {
   .header {
     padding-left: 60px;
-    padding-top: 60px;
+    padding-top: 40px;
     padding-bottom: 30px;
     display: flex;
     justify-content: flex-start;
