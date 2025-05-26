@@ -4,19 +4,24 @@
     <h2>Affiliation</h2>
 
     <div class="grid">
-      <div class="item image">
+      <div class="item">
         <img src="/images/affiliation/affilia.png" class="cover" />
       </div>
 
-      <div class="item contact">
-        <div class="line"></div>
-
-        <div class="depart">
-          The Hong Kong University
-          <br />
-          of Science and Technology
+      <div class="item">
+        <div class="contact">
+          <div class="position">Director of CCRS</div>
+          <div class="persons">
+            <div class="person">Prof. Mengqian LU (cemlu@ust.hk)</div>
+          </div>
         </div>
-        <div class="people">Prof. Mengqian LU (cemlu@ust.hk)</div>
+        <div class="contact">
+          <div class="position">Managing Secretariat of CCRS</div>
+          <div class="persons">
+            <div class="person">Mr. Aubrey Liao (aubreyliao@ust.hk)</div>
+            <div class="person">Kexin Tu (tukexinkx@ust.hk)</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -56,51 +61,55 @@ h2 {
   object-fit: cover;
 }
 
-.line {
-  border-top: 4px solid #4e07d8;
+.contact {
+  padding-top: 80px;
+}
+
+.contact:first-child {
+  padding-top: 24px;
+
+  position: relative;
+}
+
+.contact:first-child::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 4px;
   width: 80px;
-  height: 0;
-
-  /* 对齐下面邮件地址左边 */
-  margin-left: 32px;
+  background: #4e07d8;
 }
 
-.depart {
-  font-weight: 600;
-  font-size: 24px;
+.position {
+  font-weight: 400;
+  font-size: 16px;
   /* line-height: 100%; */
-  letter-spacing: 0;
+  letter-spacing: 0%;
   color: #ffffff;
-
-  padding-top: 40px;
-  padding-bottom: 40px;
-
-  /* 对齐下面邮件地址左边 */
-  padding-left: 32px;
 }
 
-.people {
+.person {
   font-weight: 600;
   font-size: 24px;
   line-height: 40px;
-  letter-spacing: 0;
+  letter-spacing: 0%;
   color: #ffffff;
-  padding: 12px 32px;
-  background-color: #4e07d8;
-  border-radius: 32px;
+
+  padding-top: 10px;
 }
 
 @media (min-width: 1024px) {
   .grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 30px;
+    column-gap: 50px;
     padding-top: 37px;
     padding-left: 138px;
     padding-right: 135px;
     padding-bottom: 100px;
     justify-items: center;
-    align-items: center;
+    align-items: start;
   }
 }
 </style>
