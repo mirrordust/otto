@@ -31,11 +31,6 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
       <div class="logo">
         <IconLogo class="svg svg-site" />
       </div>
-      <div class="logo-name">
-        Otto Poon Centre for
-        <br />
-        Climate Resilience and Sustainability
-      </div>
     </a>
 
     <!-- <div class="flex-item more">
@@ -75,10 +70,6 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-
-  .logo-name {
-    display: none;
   }
 
   .more {
@@ -122,15 +113,6 @@ onUnmounted(() => window.removeEventListener('scroll', handleScroll))
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-
-  .logo-name {
-    padding-left: 16px;
-    color: #0b0717;
-    font-weight: 400;
-    font-size: 20px;
-    /* line-height: 100%; */
-    letter-spacing: 0;
   }
 }
 </style>
