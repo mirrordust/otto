@@ -51,18 +51,18 @@ onBeforeUnmount(() => clearInterval(timer))
     <h3>News&Events</h3>
 
     <!-- events -->
-    <div class="grid">
-      <div class="desc">
-        <div class="desc-content">
-          <div class="date">23rd April 2025</div>
+    <div class="news-contianer">
+      <div class="news-item">
+        <div class="desc">
+          <div class="date">May 23, 2025</div>
           <div class="title">
-            The 1st Otto Poon CCRS Initial Interdisciplinary Engagement Meeting
+            Croucher Foundation Director David Foster Visits HKUST for Climate Research Exchange
           </div>
         </div>
-      </div>
 
-      <div class="image">
-        <img src="/images/news/first_meeting.jpg" class="cover" />
+        <div class="image">
+          <img src="/images/news/visit_photo.jpg" class="cover" />
+        </div>
       </div>
     </div>
 
@@ -108,17 +108,22 @@ h3 {
 
   padding-top: 80px;
   padding-left: 100px;
+  padding-bottom: 32px;
 }
 
 /* ----------------------------------- */
 /* ----------  events  ----------- */
 /* ----------------------------------- */
-
-.grid {
+.news-contianer {
   padding-left: 100px;
   padding-right: 100px;
-  padding-top: 80px;
-  padding-bottom: 150px;
+  padding-bottom: 24px;
+}
+
+.news-item {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
 }
 
 .date {
@@ -129,7 +134,6 @@ h3 {
   letter-spacing: 0%;
   color: #7f7f7f;
 
-  padding-top: 7px;
   padding-bottom: 16px;
 }
 
@@ -137,26 +141,20 @@ h3 {
   font-family: 'Noto Sans';
   font-weight: 600;
   font-size: 24px;
-  line-height: 100%;
+  /* line-height: 100%; */
   letter-spacing: 0%;
   color: #000000;
-
-  padding-bottom: 13px;
 }
 
 .desc {
-  display: flex;
-  align-items: center;
-  align-self: start;
-  justify-self: start;
-}
-
-.desc-content {
   position: relative;
   padding-left: 24px;
+  height: fit-content;
+  flex-basis: 40%;
+  flex-grow: 1;
 }
 
-.desc-content::before {
+.desc::before {
   content: '';
   position: absolute;
   left: 0;
@@ -172,6 +170,8 @@ h3 {
   width: min(680px, 100%);
   border-radius: 16px;
   overflow: hidden;
+  flex-basis: 50%;
+  flex-grow: 1;
 }
 
 .cover {
@@ -257,12 +257,12 @@ h3 {
 }
 
 @media (min-width: 1024px) {
-  .grid {
+  /* .news-contianer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 30px;
     justify-items: center;
     align-items: center;
-  }
+  } */
 }
 </style>
