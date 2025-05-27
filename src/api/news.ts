@@ -1,55 +1,110 @@
-const news = [
+import ParagraphBlock from '@/components/news/ParagraphBlock.vue'
+import ImageBlock from '@/components/news/ImageBlock.vue'
+import Header2Block from '@/components/news/Header2Block.vue'
+
+interface IParagraph {
+  type: 'paragraph'
+  content: {
+    text: string
+  }
+}
+
+interface IImage {
+  type: 'image'
+  content: {
+    url: string
+    caption: string
+  }
+}
+
+interface IHeader1 {
+  type: 'header1'
+  content: {
+    text: string
+  }
+}
+
+type IBlock = IParagraph | IImage | IHeader1
+
+export interface INewsItem {
+  id: number
+  title: string
+  date: string
+  blocks: IBlock[]
+}
+
+const news: INewsItem[] = [
   {
     id: 1,
-    title:
-      '重磅 | 港科大陆萌茜教授牵头的“无缝预测与服务”计划获联合国教科文组织认可，入选“科学促进可持续发展国际十年”首批认可计划清单',
-    date: '2025-05-22',
-    link: 'https://mp.weixin.qq.com/s/kpH95DGjtyeYrEsCnU7eKA',
-  },
-  {
-    id: 2,
-    title: '香港科技大学陆萌茜教授荣获第50届日内瓦国际发明展金奖',
-    date: '2025-04-13',
-    link: 'https://mp.weixin.qq.com/s/KwWawxzWiaJUjQXh6BVKmQ',
-  },
-  {
-    id: 3,
-    title: '香港科技大学潘樂陶气候变化与可持续发展研究中心正式成立：共同应对气候变化挑战',
-    date: '2025-04-02',
-    link: 'https://mp.weixin.qq.com/s/QwC9N30ihmmBMrAVSph2Bg',
-  },
-  {
-    id: 4,
-    title: 'Journal of Climate | 青藏高原南部加热对北太平洋大气河远距离影响',
-    date: '2025-02-22',
-    link: 'https://mp.weixin.qq.com/s/O9x2GePCZL2wRSftB6-X7g',
-  },
-  {
-    id: 5,
-    title: 'DeepSeek领跑AtmosSci-Bench评测|大语言模型在大气科学中的最新进展',
-    date: '2025-02-01',
-    link: 'https://mp.weixin.qq.com/s/SajIVnftkUSgWNOdtuDRAQ',
-  },
-  {
-    id: 6,
-    title: '伴随港科大上海中心成立，数字气象服务创新实验室正式启航',
-    date: '2025-01-28',
-    link: 'https://mp.weixin.qq.com/s/0Oh2Pw-dYqwP465M16P91w',
-  },
-  {
-    id: 7,
-    title: '重要通知 | 第五届港科大“Climate, Weather, Water Forum" 开放注册！',
-    date: '2025-01-20',
-    link: 'https://mp.weixin.qq.com/s/jpOKWeihKYD28ZiPDjdpvQ',
-  },
-  {
-    id: 8,
-    title: 'Journal of Hydrology | 潜流交换对河流甲烷含量的动态变化和排放通量的关键作用',
-    date: '2024-11-26',
-    link: 'https://mp.weixin.qq.com/s/gB5Crqm4lHeuGzM5tUkAsw',
+    title: 'Croucher Foundation Director David Foster Visits HKUST for Climate Research Exchange',
+    date: '2025-05-23',
+    blocks: [
+      {
+        type: 'paragraph',
+        content: {
+          text: 'The Hong Kong University of Science and Technology (HKUST) recently welcomed Mr. David Foster, Director of the Croucher Foundation, to campus for a visit about the current research landscape of HKUST in climate and environmental studies.',
+        },
+      },
+      {
+        type: 'paragraph',
+        content: {
+          text: 'During the visit, Mr. Foster met with HKUST VPRDO Professor Cheng and affiliated members of the Otto Poon Centre for Climate Resilience and Sustainability (CCRS) at HKUST, including Professor Lu, Professor Fung, and Professor Lau.',
+        },
+      },
+      // { type: 'image', urls: ['img1.jpg', 'img2.jpg'], layout: 'grid' },
+      {
+        type: 'image',
+        content: {
+          url: '/images/news/visit_photo.jpg',
+          caption:
+            'During the visit, Mr. David Foster (second from the right) met with VPRD Professor Tim K. Cheng (center), as well as Professor Mengqian Lu (far right), Director of the Otto Poon Centre for Climate Resilience and Sustainability (CCRS), and affiliated members Professor Jimmy Fung (far left) and Professor Alexis Lau (second from the left).',
+        },
+      },
+      {
+        type: 'paragraph',
+        content: {
+          text: 'The visit provided a valuable opportunity for mutual exchange on advancing science and innovation in the environmental and sustainable development domain, while strengthening collaborative ties between HKUST and the Croucher Foundation.',
+        },
+      },
+      {
+        type: 'paragraph',
+        content: {
+          text: 'The Croucher Foundation has long been dedicated to promoting scientific research in Hong Kong and has actively supported climate and environmental research initiatives, including the upcoming Climate, Weather, and Water Forum 2025 (CWWF2025) at HKUST.',
+        },
+      },
+      {
+        type: 'header1',
+        content: {
+          text: 'About the Croucher Foundation',
+        },
+      },
+      {
+        type: 'paragraph',
+        content: {
+          text: 'Established in 1979, the Croucher Foundation is a private foundation based in Hong Kong dedicated to the promotion of excellence in natural sciences, technology, and medicine. It provides support for scientific research and education in Hong Kong through fellowships, studentships, and research grants. The Foundation plays a pivotal role in nurturing future scientific leaders and advancing knowledge in critical scientific fields.',
+        },
+      },
+    ],
   },
 ]
 
 export const getNews = () => {
   return news
+}
+
+export const getNewsById = (id: number) => {
+  const target = news.find((item) => item.id === id)
+  return target || null
+}
+
+const componentMap = {
+  paragraph: ParagraphBlock,
+  image: ImageBlock,
+  header1: Header2Block,
+}
+
+type ComponentType = keyof typeof componentMap
+
+export const getComponentByType = (type: ComponentType) => {
+  return componentMap[type]
 }

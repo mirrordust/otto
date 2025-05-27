@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed, ref, onMounted, onBeforeUnmount } from 'vue'
-import { getNews } from '@/api/news'
+import { getLinkNews } from '@/api/linkNews'
 import dayjs from 'dayjs'
 
 let timer: number = -1
-const newsList = ref(getNews())
+const newsList = ref(getLinkNews())
 const numPerPage = ref(4)
 const startIdx = ref(0)
 
@@ -54,14 +54,18 @@ onBeforeUnmount(() => clearInterval(timer))
     <div class="news-contianer">
       <div class="news-item">
         <div class="desc">
-          <div class="date">May 23, 2025</div>
-          <div class="title">
-            Croucher Foundation Director David Foster Visits HKUST for Climate Research Exchange
-          </div>
+          <RouterLink class="news_link" :to="{ name: 'news', params: { id: 1 } }">
+            <div class="date">May 23, 2025</div>
+            <div class="title">
+              Croucher Foundation Director David Foster Visits HKUST for Climate Research Exchange
+            </div>
+          </RouterLink>
         </div>
 
         <div class="image">
-          <img src="/images/news/visit_photo.jpg" class="cover" />
+          <RouterLink class="news_link" :to="{ name: 'news', params: { id: 1 } }">
+            <img src="/images/news/visit_photo.jpg" class="cover" />
+          </RouterLink>
         </div>
       </div>
     </div>
@@ -124,6 +128,10 @@ h3 {
   display: flex;
   gap: 60px;
   flex-wrap: wrap;
+}
+
+.news_link {
+  text-decoration: none;
 }
 
 .date {
